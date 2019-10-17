@@ -1,0 +1,151 @@
+{
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		// 登录页面
+		{
+			"path": "pages/login/login",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
+		// 框架页面
+		{
+			"path": "pages/index/index",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
+		// 首页
+		{
+			"path": "pages/home/home",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
+		// 查询
+		{
+			"path": "pages/search/search",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
+		// 我的
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
+		// 我的页面所有内容
+		// 设置
+		{
+			"path": "pages/mine/setup",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
+		// 修改密码
+		{
+			"path": "pages/mine/changePassword",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
+		// 意见反馈
+		{
+			"path": "pages/mine/feedback",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
+		// 关于我们
+		{
+			"path": "pages/mine/about",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
+		// 数据分析
+		{
+			"path": "pages/mine/analysis",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"titleNView": {
+						"backgroundColor": "#E30F2B",
+						"titleColor": "#FFFFFF",
+						"titleText": "数据分析"
+						// "type": "transparent"
+					}
+				}
+				
+			}
+		},
+		// 用户详情
+		{
+			"path": "pages/userDetail/userDetail",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		}
+	],
+	"tabBar": {
+    "color": "#AAAAAA",
+    "selectedColor": "#E30F2B",
+    "borderStyle": "white",
+		"height": "46px",
+    "backgroundColor": "#ffffff",
+    "list": [
+			{
+        "pagePath": "pages/home/home",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home_cur.png",
+        "text": "首页"
+			}, 
+			{
+        "pagePath": "pages/search/search",
+        "iconPath": "static/tabbar/search.png",
+        "selectedIconPath": "static/tabbar/search_cur.png",
+        "text": "查询"
+			},
+			{
+			  "pagePath": "pages/mine/mine",
+			  "iconPath": "static/tabbar/mine.png",
+			  "selectedIconPath": "static/tabbar/mine_cur.png",
+			  "text": "我的"
+			}
+		]
+	},
+	"globalStyle": {
+		"mp-alipay": {
+			/* 支付宝小程序特有相关 */
+			"transparentTitle": "always",
+			"allowsBounceVertical": "NO"
+		},
+		"navigationBarBackgroundColor": "#0081ff",
+		"navigationBarTitleText": "face",
+		"navigationStyle": "custom",
+		"navigationBarTextStyle": "white"
+	},
+	"usingComponts": true
+}

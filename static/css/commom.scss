@@ -1,0 +1,67 @@
+// * { box-sizing: border-box; }
+/* === 布局定位 === */
+.fixed { position: fixed; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.inline-block { display: inline-block; }
+.fl { float: left; }
+.fr { float: right; }
+.clearBoth { clear: both; }
+
+.w100 { width: 100%; }
+.h100 { height: 100%; }
+
+.durationTime {
+	animation-duration: 1.5s;
+}
+/* ===  间距 === */
+
+/* margin */
+@for $number from 5 through 150 {
+	.mt#{$number} {
+		margin-top: #{$number}upx;
+	}
+	.ml#{$number} {
+		margin-left: #{$number}upx;
+	}
+	.mr#{$number} {
+		margin-right: #{$number}upx;
+	}
+	.mb#{$number} {
+		margin-bottom: #{$number}upx;
+	}
+	.pt#{$number} {
+		padding-top: #{$number}upx;
+	}
+	.pl#{$number} {
+		padding-left: #{$number}upx;
+	}
+	.pr#{$number} {
+		padding-right: #{$number}upx;
+	}
+	.pb#{$number} {
+		padding-bottom: #{$number}upx;
+	}
+}
+
+/* === 字体 === */
+
+@for $size from 20 through 50 {
+	.fz#{$size} {
+		font-size: #{$size}upx;
+	}
+}
+
+/* === 边框圆角 === */
+@for $radius from 5 through 50 {
+	.radius#{$radius} {
+		border-radius: #{$radius}upx;
+	}
+}
+
+/* === 字体颜色 === */
+@for $color from 1 through 9 {
+	.color-#{$color} {
+		color: #{'#' + $color * 111111};
+	}
+}
