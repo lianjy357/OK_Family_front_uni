@@ -24,7 +24,7 @@
 							<view class="inputItem mt50 itemShadow relative" :class="[currentFocus == 1 ? 'box-color' : '']" >
 								<image class="icon1 absolute" src="/static/tabbar/yonghu.png" mode="aspectFit"></image>
 								<input @focus="currentFocus = 1" @blur="currentFocus = 0"
-								 class="pl70 primary-color h100" type="text" placeholder-class="text-gray" maxlength="11" v-model="loginForm.userName" placeholder="请输入手机号码"/>
+								 class="pl70 primary-color h100" type="text" placeholder-class="text-gray" maxlength="11" v-model="loginForm.userName" placeholder="请输入用户名"/>
 							</view>
 							<view class="inputItem mt50 itemShadow relative" :class="[currentFocus == 2 ? 'box-color' : '']">
 								<image class="icon2 absolute" src="/static/tabbar/mima.png" mode="aspectFit"></image>
@@ -38,7 +38,7 @@
 
 							<view class="flex justify-center align-center">
 								<!-- <image style="width:40upx;height:40upx;" class="mr15" src="/static/tabbar/icon_question.png" mode="aspectFit"></image>  -->
-								<text class="text-gray">有问题请联系客服</text>
+								<text class="text-gray">有问题请大白</text>
 							</view>
 						</view>
 				</swiper-item>
@@ -51,26 +51,26 @@
 						<view class="inputItem mt40 itemShadow relative" :class="[currentFocus == 3 ? 'box-color' : '']">
 							<image class="icon1 absolute" src="/static/tabbar/yonghu.png" mode="aspectFit"></image>
 							<input @focus="currentFocus = 3" @blur="currentFocus = 0"
-							class="pl70 h100 primary-color" type="text" placeholder-class="text-gray" maxlength="11" v-model="loginForm.userName" placeholder="请输入11位手机号码"/>
+							class="pl70 h100 primary-color" type="text" placeholder-class="text-gray" maxlength="30" v-model="registerForm.userName" placeholder="请输入用户名"/>
 						</view>
 						<view class="inputItem mt40 itemShadow relative pr200" :class="[currentFocus == 4 ? 'box-color' : '']">
 							<image class="icon3 absolute" src="/static/tabbar/dunpai.png" mode="aspectFit"></image>
 							<input @focus="currentFocus = 4" @blur="currentFocus = 0"
-							class="pl70  primary-color h100" type="text" placeholder-class="text-gray" maxlength="6" v-model="loginForm.vCode" placeholder="请输入邀请码">
+							class="pl70  primary-color h100" type="text" placeholder-class="text-gray" maxlength="30" v-model="registerForm.helloCode" placeholder="请输入邀请码">
 							<!-- <view v-show="loginData.showVcode" @click="getVcode()" class='verifyBtn round flex justify-center align-center bg-active shadow-blur'>验证码</view>
 							<view v-show="!loginData.showVcode" class='verifyBtn round flex justify-center align-center bg-grey shadow-blur'>{{loginData.timer}}s</view> -->
 						</view>
 						<view class="inputItem mt40 itemShadow relative" :class="[currentFocus == 5 ? 'box-color' : '']">
-							<image class="icon2 absolute" src="/static/tabbar/mima.png" mode="aspectFit"></image>
+							<image class="icon2 absolute" src="/static/tabbar/mima.png" mode="aspectFit" @click="showPassword"></image>
 							<input @focus="currentFocus = 5" @blur="currentFocus = 0"
-							:password="loginData.showPwd" class="pl70 h100 primary-color" type="text" placeholder-class="text-gray" maxlength="15" v-model="loginForm.vPassword" placeholder="请输入6~15位数字或字母密码">
+							:password="registerForm.showPassword" class="pl70 h100 primary-color" type="text" placeholder-class="text-gray" maxlength="15" v-model="registerForm.password" placeholder="请输入6~15位数字或字母密码">
 						</view>
 						
 						<view class="cu-btn round submitBtn mt50 mb30 lg bg-cyan itemShadow shadow-blur" @tap="register">注册</view>
 
 						<view class="flex justify-center align-center">
 							<!-- <image style="width:38upx;height:38upx;" class="mr15" src="/static/tabbar/icon_question.png" mode="aspectFit"></image>  -->
-							<text class="text-gray">有问题请联系客服</text>
+							<!-- <text class="text-gray">有问题请联系客服</text> -->
 						</view>
 					</view>
 
@@ -79,11 +79,6 @@
 		
 		</view>
 
-		
-		<!-- mask:  	true 无遮罩层              		|     false 有遮罩层 						 -->
-		<!-- click:  	true 点击空白无法关闭加载状态   |     false 点击空白可关闭加载状态 -->
-		<!-- <wLoading text="" mask="false" click="true" ref="loading" :show="loading"></wLoading>
- -->
 	
 		<!-- 审核驳回 窗口 -->
 		<view class="mask mask-show"  @click="TipPopShow = false" v-if="TipPopShow" @touchmove.stop.prevent="preventTouchMove">
@@ -109,18 +104,15 @@ export default {
       ],
       TabCur: 'login',
 			currentTab: 0,
-      loginForm: {
+      loginForm: { // 登录数据
         userName: '',
-        password: '',
-        vCode: '',
-        vPassword: ''
+        password: ''
       },
-			
-			loginData: {
-				showVcode: '',
-				vCode: '',
-				timer: '',
-				showPwd: ''
+			registerForm: { // 注册数据
+				userName: '',
+				helloCode: '', // 邀请码
+				password: '',
+				showPassword: false, // 显示密码
 			}
     }
   },
@@ -139,14 +131,17 @@ export default {
       this.currentTab = currentIndex;
       this.resetForm();
     },
-
     // 清空表单
     resetForm () {
       this.loginForm.userName = '';
       this.loginForm.password = '';
       this.loginForm.vPassword = '';
       this.loginForm.vCode = '';
-    },
+		},
+		// 显示密码
+		showPassword(){
+			this.registerForm.showPassword = !this.registerForm.showPassword
+		},
     // 登录
     async submit () {
       // if (!this.loginForm.userName) return showMessage('请输入手机号');
@@ -165,15 +160,15 @@ export default {
       // }
       // this.loginSuccess();	
     },
-	// 注册
-	async register () {
-		let params = {};
-		const data = await api.user.userRegister(params)
-	}
-   //  async loginSuccess () {
-   //    // uni.reLaunch({	url: '/pages/home/home' });
-			// uni.switchTab({	url: '/pages/home/home'	});
-   //  },
+		// 注册
+		async register () {
+			let params = {
+				userName: this.registerForm.userName,
+				password: this.registerForm.password,
+				helloCode: this.registerForm.helloCode
+			};
+			const data = await api.user.userRegister(params)
+		}
   },
 }
 </script>

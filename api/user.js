@@ -20,7 +20,7 @@ export const userRegister = data => {
     url: '/register',
     data: data,
     Type: 'POST',
-    header: { 'content-type': 'application/x-www-form-urlencoded' }
+    // header: { 'content-type': 'application/x-www-form-urlencoded' }
   };
   return httpRequest(baseUrl, params);
 }
