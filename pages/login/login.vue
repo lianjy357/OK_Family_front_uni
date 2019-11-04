@@ -56,9 +56,9 @@
 						<view class="inputItem mt40 itemShadow relative pr200" :class="[currentFocus == 4 ? 'box-color' : '']">
 							<image class="icon3 absolute" src="/static/tabbar/dunpai.png" mode="aspectFit"></image>
 							<input @focus="currentFocus = 4" @blur="currentFocus = 0"
-							class="pl70  primary-color h100" type="text" placeholder-class="text-gray" maxlength="6" v-model="loginForm.vCode" placeholder="请输入验证码">
-							<view v-show="loginData.showVcode" @click="getVcode()" class='verifyBtn round flex justify-center align-center bg-active shadow-blur'>验证码</view>
-							<view v-show="!loginData.showVcode" class='verifyBtn round flex justify-center align-center bg-grey shadow-blur'>{{loginData.timer}}s</view>
+							class="pl70  primary-color h100" type="text" placeholder-class="text-gray" maxlength="6" v-model="loginForm.vCode" placeholder="请输入邀请码">
+							<!-- <view v-show="loginData.showVcode" @click="getVcode()" class='verifyBtn round flex justify-center align-center bg-active shadow-blur'>验证码</view>
+							<view v-show="!loginData.showVcode" class='verifyBtn round flex justify-center align-center bg-grey shadow-blur'>{{loginData.timer}}s</view> -->
 						</view>
 						<view class="inputItem mt40 itemShadow relative" :class="[currentFocus == 5 ? 'box-color' : '']">
 							<image class="icon2 absolute" src="/static/tabbar/mima.png" mode="aspectFit"></image>
@@ -165,6 +165,11 @@ export default {
       // }
       // this.loginSuccess();	
     },
+	// 注册
+	async register () {
+		let params = {};
+		const data = await api.user.userRegister(params)
+	}
    //  async loginSuccess () {
    //    // uni.reLaunch({	url: '/pages/home/home' });
 			// uni.switchTab({	url: '/pages/home/home'	});

@@ -14,6 +14,16 @@ export const userLogin = data => {
   };
   return httpRequest(baseUrl, params);
 }
+// 用户注册
+export const userRegister = data => {
+  let params = {
+    url: '/register',
+    data: data,
+    Type: 'POST',
+    header: { 'content-type': 'application/x-www-form-urlencoded' }
+  };
+  return httpRequest(baseUrl, params);
+}
 
 // 退出登录
 export const logout = data => {
@@ -36,15 +46,7 @@ export const sendVerifyCode = data => {
   return httpRequest(baseUrl, params);
 }
 
-// 用户注册
-export const userRegedit = data => {
-  let params = {
-    url: `/userRegedit?loginName=${data.loginName}&verification=${data.verification}&password=${data.password}`,
-    data: {},
-    Type: 'POST',
-  };
-  return httpRequest(baseUrl, params);
-}
+
 // 上传图片文件 data = { filePath  }
 export const fileUpload = data => {
   let params = {
@@ -103,7 +105,7 @@ export default {
   userLogin,                  // 用户登入
   logout,                     // 退出登录
   sendVerifyCode,             // 发送验证码
-  userRegedit,                // 用户注册
+  userRegister,                // 用户注册
 	getUserNews,								// 获取用户信息
   fileUpload,                 // 上传图片
   saveSignUp,                 // 保存报名信息
