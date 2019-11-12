@@ -9,15 +9,18 @@ Vue.prototype.$store = store;
 import home from './pages/home/home.vue';
 Vue.component('Home', home);
 
-import search from './pages/search/search.vue';
-Vue.component('Search', search);
+import milepost from './pages/milepost/milepost.vue';
+Vue.component('Milepost', milepost);
 
 import mine from './pages/mine/mine.vue';
 Vue.component('Mine', mine);
 
-import cuCustom from './colorui/components/cu-custom.vue';
-Vue.component('cu-custom', cuCustom);
+import cuCustom from './colorui/components/cu-custom.vue'
+Vue.component('cu-custom',cuCustom)
 
+Vue.config.productionTip = false
+
+App.mpType = 'app'
 
 const app = new Vue({
     ...App

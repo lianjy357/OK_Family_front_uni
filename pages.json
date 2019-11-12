@@ -2,14 +2,14 @@
 	"pages": [
 		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		// 登录页面
-		{
-			"path": "pages/login/login",
-			"style": {
-				"app-plus": {
-					"titleNView": false // 禁用原生导航栏
-				}
-			}
-		},
+		// {
+		// 	"path": "pages/login/login",
+		// 	"style": {
+		// 		"app-plus": {
+		// 			"titleNView": false // 禁用原生导航栏
+		// 		}
+		// 	}
+		// },
 		// 框架页面
 		{
 			"path": "pages/index/index",
@@ -19,7 +19,7 @@
 				}
 			}
 		},
-		// 首页
+		// 有目标
 		{
 			"path": "pages/home/home",
 			"style": {
@@ -28,9 +28,9 @@
 				}
 			}
 		},
-		// 查询
+		// 更专注
 		{
-			"path": "pages/search/search",
+			"path": "pages/milepost/milepost",
 			"style": {
 				"app-plus": {
 					"titleNView": false // 禁用原生导航栏
@@ -120,13 +120,13 @@
         "pagePath": "pages/home/home",
         "iconPath": "static/tabbar/home.png",
         "selectedIconPath": "static/tabbar/home_cur.png",
-        "text": "首页"
+        "text": "有目标"
 			}, 
 			{
-        "pagePath": "pages/search/search",
+        "pagePath": "pages/milepost/milepost",
         "iconPath": "static/tabbar/search.png",
         "selectedIconPath": "static/tabbar/search_cur.png",
-        "text": "查询"
+        "text": "更专注"
 			},
 			{
 			  "pagePath": "pages/mine/mine",
@@ -142,8 +142,8 @@
 			"transparentTitle": "always",
 			"allowsBounceVertical": "NO"
 		},
-		"navigationBarBackgroundColor": "#0081ff",
-		"navigationBarTitleText": "face",
+		// "navigationBarBackgroundColor": "#0081ff",
+		// "navigationBarTitleText": "face",
 		"navigationStyle": "custom",
 		"navigationBarTextStyle": "white"
 	},
