@@ -8,19 +8,43 @@
 		<scroll-view scroll-y class="page">
 			
 			<view>
-				<view class="padding-xl radius shadow bg-red margin-top" @tap="toChild" :data-url="item.url"
-				 v-for="(item,index) in list" :key="index">
-					<view class="cardTitle">
-						<span class="cu-tag light bg-grey">公司</span><span>{{item.title}}</span>
-					</view>
-					
-					<view class="cu-progress round sm striped active">
-						<view class="bg-yellow" :style="[{ width:loading?'60%':''}]"></view>
-					</view>
+				<view @tap="toChild" :data-data="item"
+				 	v-for="(item,index) in list" :key="index">
+
+						<!-- O -->
+						<view class="padding-xl radius margin-top" :class="type[item.type].bgc">
+							<view><span class="cu-tag light bg-grey">{{type[item.type].name}}</span><span style="padding-left: 20upx;">{{item.timeOpen}} ~ {{item.timeOut}}</span></view>
+							<view class="cardTitle">
+								<span>{{item.title}}</span>
+							</view>
+							<view class="cu-progress round sm striped active">
+								<view :class="type[item.type].bgc_pro1" :style="[{ width:item.progress ? item.progress + '%':''}]"></view>
+							</view>
+						</view>
+
+						<!-- KR -->
+						<view class="padding-xs padding-right-xxl padding-left-xxl radius shadow-warp bg-white">
+							<view class="padding-xs margin-top-xs margin-bottom-xs solids-left"
+								v-for="(OR,index) in item.KR" :key="index">
+								<!-- top -->
+								<view class="flex justify-between">
+									<view>{{OR.title}}</view>
+									<view>{{OR.numOpen}} -> {{OR.numOut}}</view>
+								</view>
+								<!-- progress -->
+								<view class="cu-progress round margin-top">
+									<view :class="type[item.type].bgc_pro2" :style="[{ width:OR.progress ? OR.progress + '%':''}]">{{OR.progress}}%</view>
+								</view>
+							</view>
+						</view>
+
 				</view>
 			</view>
 			<view class="cu-tabbar-height"></view>
 		</scroll-view>
+		<view class="toolbar solid-bottom text-sl padding">
+			<text class=" cuIcon-roundaddfill text-green"></text>
+		</view>
 	</view>
 </template>
 
@@ -29,29 +53,50 @@
 		name: "components",
 		data() {
 			return {
-				loading: '60%',
-				list: [{
-						title: '索引列表',
-						img: 'https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg',
-						url: '../plugin/indexes'
+				type: [
+					{type: 0, name: '成员', bgc: 'bg-red', bgc_pro1: 'bg-yellow', bgc_pro2: 'bg-green'},
+					{type: 1, name: '家庭', bgc: 'bg-blue', bgc_pro1: 'bg-olive', bgc_pro2: 'bg-green'}
+				],
+				list: [
+					{
+						type: 1,
+						title: '这是目标',
+						timeOpen: '2020-01-01',
+						timeOut: '2020-03-01',
+						progress: '30',
+						KR: [
+							{title: '达到一定效果', progress: '30', type: 'NU', numOpen: '0', numOut: '80' }
+						]
 					},
 					{
-						title: '微动画',
-						img: 'https://image.weilanwl.com/color2.0/plugin/wdh2236.jpg',
-						url: '../plugin/animation'
+						type: 0,
+						title: '这是个人目标',
+						timeOpen: '2020-01-01',
+						timeOut: '2020-03-01',
+						progress: '30',
+						KR: [
+							{title: '达到一定效果的时候', progress: '30', type: 'NU', numOpen: '0', numOut: '80' },
+							{title: '达到一定效果的时候', progress: '60', type: 'NU', numOpen: '0', numOut: '80' },
+							{title: '达到一定效果的时候', progress: '80', type: 'NU', numOpen: '0', numOut: '80' }
+						]
 					},
 					{
-						title: '全屏抽屉',
-						img: 'https://image.weilanwl.com/color2.0/plugin/qpct2148.jpg',
-						url: '../plugin/drawer'
-					},
-					{
-						title: '垂直导航',
-						img: 'https://image.weilanwl.com/color2.0/plugin/qpczdh2307.jpg',
-						url: '../plugin/verticalnav'
+						type: 0,
+						title: '这是个人目标',
+						timeOpen: '2020-01-01',
+						timeOut: '2020-03-01',
+						progress: '30',
+						KR: [
+							{title: '达到一定效果的时候', progress: '30', type: 'NU', numOpen: '0', numOut: '80' },
+							{title: '达到一定效果的时候', progress: '60', type: 'NU', numOpen: '0', numOut: '80' },
+							{title: '达到一定效果的时候', progress: '80', type: 'NU', numOpen: '0', numOut: '80' }
+						]
 					}
 				]
 			};
+		},
+		create(){
+			
 		},
 		methods: {
 			toChild(e) {
@@ -78,5 +123,11 @@
 		text-shadow: 0px 0px 6upx rgba(0, 0, 0, 0.3)
 	}
 
+	/* 工具 */
+	.toolbar{
+		position: fixed;
+		right:30upx;
+		bottom: 100upx;
+	}
 
 </style>

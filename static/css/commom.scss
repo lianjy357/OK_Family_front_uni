@@ -46,7 +46,7 @@
 
 /* === 字体 === */
 
-@for $size from 20 through 50 {
+@for $size from 20 through 100 {
 	.fz#{$size} {
 		font-size: #{$size}upx;
 	}

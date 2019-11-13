@@ -3214,6 +3214,10 @@ scroll-view.cu-steps .cu-item {
 	padding-right: 50upx;
 }
 
+.padding-right-xxl {
+	padding-right: 60upx;
+}
+
 .padding-bottom-xs {
 	padding-bottom: 10upx;
 }
@@ -3252,6 +3256,10 @@ scroll-view.cu-steps .cu-item {
 
 .padding-left-xl {
 	padding-left: 50upx;
+}
+
+.padding-left-xxl {
+	padding-left: 60upx;
 }
 
 .padding-lr-xs {
