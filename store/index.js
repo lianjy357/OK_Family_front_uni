@@ -10,7 +10,15 @@ const store = new Vuex.Store({
 		hasLogin: false, // 是否处于登录状态
 		userInfo: {}, // 登录用户信息
 		
-		currentUserData: null,		// 当前查看的用户信息
+		OKRInfo: [], // OKR信息
+		OKRType: [
+			{type: 0, name: '成员', bgc: 'bg-red', bgc_pro1: 'bg-yellow', bgc_pro2: 'bg-green'},
+			{type: 1, name: '家庭', bgc: 'bg-blue', bgc_pro1: 'bg-olive', bgc_pro2: 'bg-green'}
+		],
+		member: [ // 成员
+			{username: 'lianjy', nickname: '大白'},
+			{username: 'wangy', nickname: '小雨'}
+		]
 	},
 	mutations: {
 		// 登录
@@ -23,9 +31,6 @@ const store = new Vuex.Store({
 			})
 		},
 		
-		setCurrentUserData (state, userData) {
-			state.currentUserData = userData;
-		}
 	},
 	actions: {
 

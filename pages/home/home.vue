@@ -12,13 +12,13 @@
 				 	v-for="(item,index) in list" :key="index">
 
 						<!-- O -->
-						<view class="padding-xl radius margin-top" :class="type[item.type].bgc">
-							<view><span class="cu-tag light bg-grey">{{type[item.type].name}}</span><span style="padding-left: 20upx;">{{item.timeOpen}} ~ {{item.timeOut}}</span></view>
+						<view class="padding-xl radius margin-top" :class="OKRType[item.type].bgc">
+							<view><span class="cu-tag light bg-grey">{{OKRType[item.type].name}}</span><span style="padding-left: 20upx;">{{item.timeOpen}} ~ {{item.timeOut}}</span></view>
 							<view class="cardTitle">
 								<span>{{item.title}}</span>
 							</view>
 							<view class="cu-progress round sm striped active">
-								<view :class="type[item.type].bgc_pro1" :style="[{ width:item.progress ? item.progress + '%':''}]"></view>
+								<view :class="OKRType[item.type].bgc_pro1" :style="[{ width:item.progress ? item.progress + '%':''}]"></view>
 							</view>
 						</view>
 
@@ -33,7 +33,7 @@
 								</view>
 								<!-- progress -->
 								<view class="cu-progress round margin-top">
-									<view :class="type[item.type].bgc_pro2" :style="[{ width:OR.progress ? OR.progress + '%':''}]">{{OR.progress}}%</view>
+									<view :class="OKRType[item.type].bgc_pro2" :style="[{ width:OR.progress ? OR.progress + '%':''}]">{{OR.progress}}%</view>
 								</view>
 							</view>
 						</view>
@@ -51,14 +51,15 @@
 </template>
 
 <script>
+	import { mapState } from 'vuex';  
 	export default {
 		name: "components",
 		data() {
 			return {
-				type: [
-					{type: 0, name: '成员', bgc: 'bg-red', bgc_pro1: 'bg-yellow', bgc_pro2: 'bg-green'},
-					{type: 1, name: '家庭', bgc: 'bg-blue', bgc_pro1: 'bg-olive', bgc_pro2: 'bg-green'}
-				],
+				// type: [
+				// 	{type: 0, name: '成员', bgc: 'bg-red', bgc_pro1: 'bg-yellow', bgc_pro2: 'bg-green'},
+				// 	{type: 1, name: '家庭', bgc: 'bg-blue', bgc_pro1: 'bg-olive', bgc_pro2: 'bg-green'}
+				// ],
 				list: [
 					{
 						type: 1,
@@ -99,6 +100,9 @@
 					}
 				]
 			};
+		},
+		computed: {
+			...mapState(['OKRType'])
 		},
 		create(){
 			

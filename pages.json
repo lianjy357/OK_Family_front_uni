@@ -46,6 +46,15 @@
 				}
 			}
 		},
+		// 家庭-所有家庭成员
+		{
+			"path": "pages/family/family",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
 		// 我的
 		{
 			"path": "pages/mine/mine",
