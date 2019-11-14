@@ -42,9 +42,11 @@
 			</view>
 			<view class="cu-tabbar-height"></view>
 		</scroll-view>
-		<view class="toolbar solid-bottom text-sl padding">
+		<!-- 新增按钮 -->
+		<view class="toolbar solid-bottom text-sl padding" @click="add">
 			<text class=" cuIcon-roundaddfill text-green"></text>
 		</view>
+		<!-- 新增按钮 -->
 	</view>
 </template>
 
@@ -64,6 +66,7 @@
 						timeOpen: '2020-01-01',
 						timeOut: '2020-03-01',
 						progress: '30',
+						person: ['大白','小雨'],
 						KR: [
 							{title: '达到一定效果', progress: '30', type: 'NU', numOpen: '0', numOut: '80' }
 						]
@@ -74,6 +77,7 @@
 						timeOpen: '2020-01-01',
 						timeOut: '2020-03-01',
 						progress: '30',
+						person: ['大白'],
 						KR: [
 							{title: '达到一定效果的时候', progress: '30', type: 'NU', numOpen: '0', numOut: '80' },
 							{title: '达到一定效果的时候', progress: '60', type: 'NU', numOpen: '0', numOut: '80' },
@@ -86,6 +90,7 @@
 						timeOpen: '2020-01-01',
 						timeOut: '2020-03-01',
 						progress: '30',
+						person: ['大白'],
 						KR: [
 							{title: '达到一定效果的时候', progress: '30', type: 'NU', numOpen: '0', numOut: '80' },
 							{title: '达到一定效果的时候', progress: '60', type: 'NU', numOpen: '0', numOut: '80' },
@@ -104,6 +109,12 @@
 					url: e.currentTarget.dataset.url
 				})
 			},
+			// 新增OKR
+			add(){
+				uni.navigateTo({
+					url: '/pages/plugin/OKRadd'
+				})
+			}
 		},
 	}
 </script>

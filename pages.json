@@ -37,6 +37,15 @@
 				}
 			}
 		},
+		// 插件-新增OKR
+		{
+			"path": "pages/plugin/OKRadd",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
 		// 我的
 		{
 			"path": "pages/mine/mine",
@@ -97,15 +106,6 @@
 					}
 				}
 				
-			}
-		},
-		// 用户详情
-		{
-			"path": "pages/userDetail/userDetail",
-			"style": {
-				"app-plus": {
-					"titleNView": false // 禁用原生导航栏
-				}
 			}
 		}
 	],
