@@ -10,31 +10,29 @@
 
       <view class="cu-form-group">
 				<view class="title">关键结果</view>
-				<input name="input" v-model="formInfo.title"></input>
+				<input name="input" v-model="KR.title"></input>
 			</view>
 
-			<view class="cu-form-group" @click="navClick">
+			<view class="cu-form-group" @click="toggleMask('show')">
 				<view class="title">类型选择</view>
 				<view class="pickerRun">
 					<view class="pickerRunshow" v-for="(item,index) in KRType" :key="index">
-						<text v-if="item.indexOf(type)>0">{{item.name}}</text>
+						<text v-if="item.type === KR.type">{{item.name}}</text>
 					</view>
 				</view>
 			</view>
+			<view class="cu-form-group">
+				<view class="title">目标值</view>
+				<input mode="number" name="input" maxlength="2" v-model="KR.endNum" placeholder='根据类型填写数值'></input>
+				<text v-if="KR.type === 'PER'">%</text>
+			</view>
+			<view class="cu-form-group">
+				<view class="title">信心值</view>
+				<input mode="number" name="input" maxlength="2" v-model="KR.confidenceNum" placeholder='你能做到十分之几的信心(5/10)'></input>
+				<text>/10</text>
+			</view>
 
     </form>
-
-
-		<form>
-			<view class="cu-form-group margin-top">
-				<view class="title">OKR类型</view>
-				<picker @change="pickerOKRType" :value="formInfo.type" :range="OKRType" range-key="name">
-					<view class="picker">
-						{{formInfo.type>-1?OKRType[formInfo.type].name:'请选择'}}
-					</view>
-				</picker>
-			</view>
-		</form>
 
 
     <!-- 弹出面板-类型面板 -->
@@ -45,7 +43,7 @@
 					<view class="con">
 						<view class="left">
 							<text class="title">{{item.name}}</text>
-							<text class="time">配送费用：{{item.fee}}</text>
+							<text class="time">{{item.context}}</text>
 						</view>
 					</view>
 				</view>
@@ -61,7 +59,14 @@ import { mapState } from 'vuex';
 export default {
 	data(){
 		return{
-      type: 'NUM', // 类型选择
+			KR: {
+				title: '', // 标题
+				progress: 0, // 进度（默认值为0）
+				type: 'NUM', // 类型选择
+				startNum: 0, // 起始值，默认值为0
+				endNum: '', // 目标值
+				confidenceNum: '', // 信心指数
+			},
 			maskState: 0, //优惠券面板显示状态
 		}
 	},
@@ -75,14 +80,13 @@ export default {
       let	state = type === 'show' ? 1 : 0;
       this.maskState = 2;
       if (typeof type === 'number') {
-        this.peisong = this.express[type].name
-        this.peisongfee = this.express[type].fee
-        this.searchExpr = this.express[type]
+        this.KR.type = this.KRType[type].type
       }
       setTimeout(()=>{
         this.maskState = state;
       }, timer)
-    },
+		},
+		stopPrevent(){}
 	}
 }
 </script>
@@ -140,7 +144,7 @@ export default {
   
   .mask-content{
     width: 100%;
-    min-height: 30vh;
+    min-height: 20vh;
     max-height: 70vh;
     background: #f3f3f3;
     transform: translateY(100%);

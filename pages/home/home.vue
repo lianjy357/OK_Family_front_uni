@@ -29,7 +29,7 @@
 								<!-- top -->
 								<view class="flex justify-between">
 									<view>{{OR.title}}</view>
-									<view>{{OR.numOpen}} -> {{OR.numOut}}</view>
+									<view>{{OR.startNum}} -> {{OR.endNum}}</view>
 								</view>
 								<!-- progress -->
 								<view class="cu-progress round margin-top">
@@ -69,7 +69,7 @@
 						progress: '30',
 						person: ['大白','小雨'],
 						KR: [
-							{title: '达到一定效果', progress: '30', type: 'NU', numOpen: '0', numOut: '80' }
+							{title: '达到一定效果', progress: '30', type: 'NU', startNum: '0', endNum: '80' }
 						]
 					},
 					{
@@ -80,9 +80,9 @@
 						progress: '30',
 						person: ['大白'],
 						KR: [
-							{title: '达到一定效果的时候', progress: '30', type: 'NU', numOpen: '0', numOut: '80' },
-							{title: '达到一定效果的时候', progress: '60', type: 'NU', numOpen: '0', numOut: '80' },
-							{title: '达到一定效果的时候', progress: '80', type: 'NU', numOpen: '0', numOut: '80' }
+							{title: '达到一定效果的时候', progress: '30', type: 'NU', startNum: '0', endNum: '80' },
+							{title: '达到一定效果的时候', progress: '60', type: 'NU', startNum: '0', endNum: '80' },
+							{title: '达到一定效果的时候', progress: '80', type: 'NU', startNum: '0', endNum: '80' }
 						]
 					},
 					{
@@ -93,9 +93,9 @@
 						progress: '30',
 						person: ['大白'],
 						KR: [
-							{title: '达到一定效果的时候', progress: '30', type: 'NU', numOpen: '0', numOut: '80' },
-							{title: '达到一定效果的时候', progress: '60', type: 'NU', numOpen: '0', numOut: '80' },
-							{title: '达到一定效果的时候', progress: '80', type: 'NU', numOpen: '0', numOut: '80' }
+							{title: '达到一定效果的时候', progress: '30', type: 'NU', startNum: '0', endNum: '80' },
+							{title: '达到一定效果的时候', progress: '60', type: 'NU', startNum: '0', endNum: '80' },
+							{title: '达到一定效果的时候', progress: '80', type: 'NU', startNum: '0', endNum: '80' }
 						]
 					}
 				]
