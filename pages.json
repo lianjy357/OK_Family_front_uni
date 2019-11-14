@@ -39,7 +39,7 @@
 		},
 		// 插件-新增OKR
 		{
-			"path": "pages/plugin/OKRadd",
+			"path": "pages/home/OKRadd",
 			"style": {
 				"app-plus": {
 					"titleNView": false // 禁用原生导航栏
@@ -48,7 +48,7 @@
 		},
 		// 插件-新增KR
 		{
-			"path": "pages/plugin/OKRaddKR",
+			"path": "pages/home/OKRaddKR",
 			"style": {
 				"app-plus": {
 					"titleNView": false // 禁用原生导航栏

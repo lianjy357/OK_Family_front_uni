@@ -56,7 +56,7 @@
 				</view>
 			</view>
 			<!-- add -->
-			<view class="cu-form-group" data-url="/pages/plugin/OKRaddKR" :data-data="formInfo.KR" @click="navClick">
+			<view class="cu-form-group" data-url="/pages/home/OKRaddKR" :data-data="formInfo.KR" @click="navClick">
 				<view class="title">+添加关键结果</view>
 				<view class="pickerRun">
 					<view class="pickerRunshow">

@@ -116,7 +116,7 @@
 			// 新增OKR
 			add(){
 				uni.navigateTo({
-					url: '/pages/plugin/OKRadd'
+					url: '/pages/home/OKRadd'
 				})
 			}
 		},
