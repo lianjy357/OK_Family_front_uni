@@ -150,7 +150,10 @@ export default {
       // if (this.loginForm.userName !== '18888888888' || this.loginForm.password !== '111111') {
       //   return showMessage('账号密码错误');
       // }
-      let params = {};
+      let params = {
+				username: this.loginForm.userName,
+				password: this.loginForm.password
+			};
       // this.loading = true;
       const data = await api.user.userLogin(params);
       return showMessage(data);

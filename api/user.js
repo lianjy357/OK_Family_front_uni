@@ -10,7 +10,7 @@ export const userLogin = data => {
     data: data,
     Type: 'POST',
     loading: false,
-    header: { 'content-type': 'application/x-www-form-urlencoded' }
+    // header: { 'content-type': 'application/x-www-form-urlencoded' }
   };
   return httpRequest(baseUrl, params);
 }

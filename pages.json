@@ -2,15 +2,14 @@
 	"pages": [
 		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		// 登录页面
-		// {
-		// 	"path": "pages/login/login",
-		// 	"style": {
-		// 		"app-plus": {
-		// 			"titleNView": false // 禁用原生导航栏
-		// 		}
-		// 	}
-		// },
-		
+		{
+			"path": "pages/login/login",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
 		// 框架页面
 		{
 			"path": "pages/index/index",
