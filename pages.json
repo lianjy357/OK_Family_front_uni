@@ -10,15 +10,7 @@
 		// 		}
 		// 	}
 		// },
-		// 插件-新增KR
-		{
-			"path": "pages/home/OKRaddKR",
-			"style": {
-				"app-plus": {
-					"titleNView": false // 禁用原生导航栏
-				}
-			}
-		},
+		
 		// 框架页面
 		{
 			"path": "pages/index/index",
@@ -56,14 +48,14 @@
 			}
 		},
 		// // 插件-新增KR
-		// {
-		// 	"path": "pages/home/OKRaddKR",
-		// 	"style": {
-		// 		"app-plus": {
-		// 			"titleNView": false // 禁用原生导航栏
-		// 		}
-		// 	}
-		// },
+		{
+			"path": "pages/home/OKRaddKR",
+			"style": {
+				"app-plus": {
+					"titleNView": false // 禁用原生导航栏
+				}
+			}
+		},
 		// 家庭-所有家庭成员
 		{
 			"path": "pages/family/family",

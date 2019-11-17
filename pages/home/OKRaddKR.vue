@@ -33,7 +33,9 @@
 			</view>
 
     </form>
-
+    <view class="padding flex flex-direction">
+			<button class="cu-btn bg-yellow margin-tb-sm lg" @click="determine">确定</button>
+		</view>
 
     <!-- 弹出面板-类型面板 -->
 		<view class="mask" :class="maskState===0 ? 'none' : maskState===1 ? 'show' : ''" @click="toggleMask">
@@ -74,6 +76,15 @@ export default {
 		...mapState(['KRType','member'])
 	},
 	methods:{
+    // 点击确定键
+    determine(){
+      if (!this.KR.title){return this.$api.msg('请输入关键结果')}
+      if (!this.KR.endNum){return this.$api.msg('请输入目标值')}
+      if (!(this.KR.endNum>0)){return this.$api.msg('请输入大于0的目标值')}
+      if (!this.KR.confidenceNum){return this.$api.msg('请输入信心指数')}
+      if (!(this.KR.confidenceNum>0) || !(this.KR.confidenceNum<=10)){return this.$api.msg('请输入大于0小于10信心指数')}
+      this.$api.prePage().formInfo.KR.push(this.KR);
+    },
 		//显示类型面板
     toggleMask(type){
       let timer = type === 'show' ? 10 : 300;

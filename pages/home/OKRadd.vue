@@ -95,9 +95,9 @@ export default {
 				progress: '30',
 				person: ['lianjy','wangy'],
 				KR: [
-					{title: '达到一定效果的时候', progress: '30', type: 'NU', numOpen: '0', numOut: '80' },
-					{title: '达到一定效果的时候', progress: '60', type: 'NU', numOpen: '0', numOut: '80' },
-					{title: '达到一定效果的时候', progress: '80', type: 'NU', numOpen: '0', numOut: '80' }
+					// {title: '达到一定效果的时候', progress: '30', type: 'NU', numOpen: '0', numOut: '80' },
+					// {title: '达到一定效果的时候', progress: '60', type: 'NU', numOpen: '0', numOut: '80' },
+					// {title: '达到一定效果的时候', progress: '80', type: 'NU', numOpen: '0', numOut: '80' }
 				]
 			},
 		}
