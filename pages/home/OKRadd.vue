@@ -47,7 +47,7 @@
 		<form>
 			<view class="margin-top"></view>
 
-			<view class="cu-form-group" v-for="(item,index) in formInfo.KR" :key="index">
+			<view class="cu-form-group" v-for="(item,index) in formInfo.KR" :key="index" data-url="/pages/home/OKRaddKR" :data-key="index" :data-data="item" @click="navClick">
 				<view class="title">KR{{index + 1}}</view>
 				<view class="pickerRun">
 					<view class="pickerRunshow">
@@ -56,7 +56,7 @@
 				</view>
 			</view>
 			<!-- add -->
-			<view class="cu-form-group" data-url="/pages/home/OKRaddKR" :data-data="formInfo.KR" @click="navClick">
+			<view class="cu-form-group" data-url="/pages/home/OKRaddKR" @click="navClick">
 				<view class="title">+添加关键结果</view>
 				<view class="pickerRun">
 					<view class="pickerRunshow">
@@ -126,9 +126,16 @@ export default {
 		},
 		// 点击调转事件
 		navClick(val){
-			console.log(val.currentTarget.dataset.url + '?data=' + JSON.stringify(val.currentTarget.dataset.data))
+			var data = ''
+			var key = ''
+			if(val.currentTarget.dataset.data){
+				data = '?data=' +  JSON.stringify(val.currentTarget.dataset.data)
+			}
+			if(val.currentTarget.dataset.key>-1){
+				key = '&key=' +  JSON.stringify(val.currentTarget.dataset.key)
+			}
 			uni.navigateTo({
-				url: val.currentTarget.dataset.url + '?data=' +  JSON.stringify(val.currentTarget.dataset.data)
+				url: val.currentTarget.dataset.url + data + key
 			})
 			
 		},

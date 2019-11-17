@@ -33,8 +33,12 @@
 			</view>
 
     </form>
-    <view class="padding flex flex-direction">
+    <view class="padding flex flex-direction" v-if="!isRevice">
 			<button class="cu-btn bg-yellow margin-tb-sm lg" @click="determine">确定</button>
+		</view>
+    <view class="padding flex flex-direction" v-if="isRevice">
+			<button class="cu-btn bg-yellow margin-tb-sm lg" @click="revice">修改</button>
+      <button class="cu-btn bg-red margin-tb-sm lg" @click="deleteData">删除</button>
 		</view>
 
     <!-- 弹出面板-类型面板 -->
@@ -61,6 +65,8 @@ import { mapState } from 'vuex';
 export default {
 	data(){
 		return{
+      isRevice: false, // 是否为修改和删除页面
+      key: -1, // 上个页面传过来的key值
 			KR: {
 				title: '', // 标题
 				progress: 0, // 进度（默认值为0）
@@ -74,7 +80,14 @@ export default {
 	},
 	computed: {
 		...mapState(['KRType','member'])
-	},
+  },
+  onLoad(option){
+    if (option.data){
+      this.KR = JSON.parse(option.data)
+      this.key = parseInt(option.key)
+      this.isRevice = true
+    }
+  },
 	methods:{
     // 点击确定键
     determine(){
@@ -84,6 +97,27 @@ export default {
       if (!this.KR.confidenceNum){return this.$api.msg('请输入信心指数')}
       if (!(this.KR.confidenceNum>0) || !(this.KR.confidenceNum<=10)){return this.$api.msg('请输入大于0小于10信心指数')}
       this.$api.prePage().formInfo.KR.push(this.KR);
+      uni.navigateBack()
+    },
+    // 确认修改
+    revice(){
+      if (!this.KR.title){return this.$api.msg('请输入关键结果')}
+      if (!this.KR.endNum){return this.$api.msg('请输入目标值')}
+      if (!(this.KR.endNum>0)){return this.$api.msg('请输入大于0的目标值')}
+      if (!this.KR.confidenceNum){return this.$api.msg('请输入信心指数')}
+      if (!(this.KR.confidenceNum>0) || !(this.KR.confidenceNum<=10)){return this.$api.msg('请输入大于0小于10信心指数')}
+      this.$api.prePage().formInfo.KR[this.key].title = this.KR.title;
+      this.$api.prePage().formInfo.KR[this.key].progress = this.KR.progress;
+      this.$api.prePage().formInfo.KR[this.key].type = this.KR.type;
+      this.$api.prePage().formInfo.KR[this.key].startNum = this.KR.startNum;
+      this.$api.prePage().formInfo.KR[this.key].endNum = this.KR.endNum;
+      this.$api.prePage().formInfo.KR[this.key].confidenceNum = this.KR.confidenceNum;
+      uni.navigateBack()
+    },
+    // 删除
+    deleteData(){
+      this.$api.prePage().formInfo.KR.splice([this.key], 1);
+      uni.navigateBack()
     },
 		//显示类型面板
     toggleMask(type){
