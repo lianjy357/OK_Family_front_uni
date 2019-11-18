@@ -35,13 +35,29 @@
 
 <script>
 	import Vue from 'vue'
+	import { mapState } from 'vuex'; 
 	export default {
 		data() {
-		return {
+			return {
 				PageCur: 'home'
 			}
 		},
+		computed: {
+			...mapState(['hasLogin','userInfo'])
+		},
+		onShow(){
+			this.isLogin()
+		},
 		methods: {
+			// 判断是否登录
+			isLogin(){
+				if(!this.hasLogin){
+					uni.navigateTo({  
+						url: '/pages/public/login'
+					})
+				}
+			},
+			// 切换标签
 			NavChange: function(e) {
 				this.PageCur = e.currentTarget.dataset.cur
 			}

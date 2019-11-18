@@ -95,6 +95,7 @@ import api from '@/api/index.js';
 import { showMessage } from '@/lib/base.js';
 import { isMobile } from '@/lib/reg.js';
 import { getStatusBar } from '@/lib/base.js';
+import { mapMutations } from 'vuex';
 export default {
   data() {
     return {
@@ -120,6 +121,7 @@ export default {
 		getStatusBar();
 	},
   methods: {
+		...mapMutations(['login']),
     // 切换标签
     tabSelect(item, index) {
       this.currentTab = index;
@@ -144,19 +146,23 @@ export default {
 		},
     // 登录
     async submit () {
-      // if (!this.loginForm.userName) return showMessage('请输入手机号');
-      // if (!isMobile.test(this.loginForm.userName)) return showMessage('请输入正确的手机号码'); 
-      // if (!this.loginForm.password) return showMessage('请输入用户密码');
-      // if (this.loginForm.userName !== '18888888888' || this.loginForm.password !== '111111') {
-      //   return showMessage('账号密码错误');
-      // }
+      if (!this.loginForm.userName) return showMessage('请输入用户名');
+      if (!this.loginForm.password) return showMessage('请输入用户密码');
       let params = {
 				username: this.loginForm.userName,
 				password: this.loginForm.password
 			};
       // this.loading = true;
-      const data = await api.user.userLogin(params);
-      return showMessage(data);
+			let res = await api.user.userLogin(params);
+			if (res.code === 10000) {
+				showMessage('登录成功');
+				this.login(res.data);
+				uni.navigateBack();
+				return
+			} else {
+				return showMessage(res.msg);
+			}
+      
       // if (data.code !== 0) {
       //   setTimeout(() => { this.loading = false; }, 300);
       //   return showMessage(data);

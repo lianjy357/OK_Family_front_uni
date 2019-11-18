@@ -1,6 +1,10 @@
 <script>
 	import Vue from 'vue'
+	import {mapMutations } from 'vuex';
 	export default {
+		methods: {
+			...mapMutations(['login'])
+		},
 		onLaunch: function() {
 			uni.getSystemInfo({
 				success: function(e) {
@@ -28,6 +32,12 @@
 					// #endif
 				}
 			})
+			// 判断用户是否已经登录
+			let userInfo = uni.getStorageSync('userInfo') || '';
+			if(userInfo){
+				//更新登陆状态
+				this.login(userInfo);
+			}
 		},
 		onShow: function() {
 			console.log('App Show')

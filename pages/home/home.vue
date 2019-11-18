@@ -13,7 +13,7 @@
 
 						<!-- O -->
 						<view class="padding-xl radius margin-top" :class="OKRType[item.type].bgc">
-							<view><span class="cu-tag light bg-grey">{{OKRType[item.type].name}}</span><span style="padding-left: 20upx;">{{item.timeOpen}} ~ {{item.timeOut}}</span></view>
+							<view><span class="cu-tag light bg-grey">{{OKRType[item.type].name}}</span><span style="padding-left: 20upx;">{{item.startDate}} ~ {{item.endDate}}</span></view>
 							<view class="cardTitle">
 								<span>{{item.title}}</span>
 							</view>
@@ -64,8 +64,8 @@
 					{
 						type: 1,
 						title: '这是目标',
-						timeOpen: '2020-01-01',
-						timeOut: '2020-03-01',
+						startDate: '2020-01-01',
+						endDate: '2020-03-01',
 						progress: '30',
 						person: ['大白','小雨'],
 						KR: [
@@ -75,8 +75,8 @@
 					{
 						type: 0,
 						title: '这是个人目标',
-						timeOpen: '2020-01-01',
-						timeOut: '2020-03-01',
+						startDate: '2020-01-01',
+						endDate: '2020-03-01',
 						progress: '30',
 						person: ['大白'],
 						KR: [
