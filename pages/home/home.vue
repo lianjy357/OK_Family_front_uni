@@ -13,7 +13,7 @@
 
 						<!-- O -->
 						<view class="padding-xl radius margin-top" :class="OKRType[item.type].bgc">
-							<view><span class="cu-tag light bg-grey">{{OKRType[item.type].name}}</span><span style="padding-left: 20upx;">{{item.startDate}} ~ {{item.endDate}}</span></view>
+							<view><span class="cu-tag light bg-grey">{{OKRType[item.type].name}}</span><span style="padding-left: 20upx;">{{item.startdate}} ~ {{item.enddate}}</span></view>
 							<view class="cardTitle">
 								<span>{{item.title}}</span>
 							</view>
@@ -29,7 +29,7 @@
 								<!-- top -->
 								<view class="flex justify-between">
 									<view>{{OR.title}}</view>
-									<view>{{OR.startNum}} -> {{OR.endNum}}</view>
+									<view>{{OR.startnum}} -> {{OR.endnum}}</view>
 								</view>
 								<!-- progress -->
 								<view class="cu-progress round margin-top">
@@ -51,67 +51,61 @@
 </template>
 
 <script>
+	import api from '@/api/index.js';
 	import { mapState } from 'vuex';  
 	export default {
 		name: "components",
 		data() {
 			return {
-				// type: [
-				// 	{type: 0, name: '成员', bgc: 'bg-red', bgc_pro1: 'bg-yellow', bgc_pro2: 'bg-green'},
-				// 	{type: 1, name: '家庭', bgc: 'bg-blue', bgc_pro1: 'bg-olive', bgc_pro2: 'bg-green'}
-				// ],
 				list: [
-					{
-						type: 1,
-						title: '这是目标',
-						startDate: '2020-01-01',
-						endDate: '2020-03-01',
-						progress: '30',
-						person: ['大白','小雨'],
-						KR: [
-							{title: '达到一定效果', progress: '30', type: 'NU', startNum: '0', endNum: '80' }
-						]
-					},
-					{
-						type: 0,
-						title: '这是个人目标',
-						startDate: '2020-01-01',
-						endDate: '2020-03-01',
-						progress: '30',
-						person: ['大白'],
-						KR: [
-							{title: '达到一定效果的时候', progress: '30', type: 'NU', startNum: '0', endNum: '80' },
-							{title: '达到一定效果的时候', progress: '60', type: 'NU', startNum: '0', endNum: '80' },
-							{title: '达到一定效果的时候', progress: '80', type: 'NU', startNum: '0', endNum: '80' }
-						]
-					},
-					{
-						type: 0,
-						title: '这是个人目标',
-						timeOpen: '2020-01-01',
-						timeOut: '2020-03-01',
-						progress: '30',
-						person: ['大白'],
-						KR: [
-							{title: '达到一定效果的时候', progress: '30', type: 'NU', startNum: '0', endNum: '80' },
-							{title: '达到一定效果的时候', progress: '60', type: 'NU', startNum: '0', endNum: '80' },
-							{title: '达到一定效果的时候', progress: '80', type: 'NU', startNum: '0', endNum: '80' }
-						]
-					}
+					// {
+					// 	type: 1,
+					// 	title: '这是目标',
+					// 	startDate: '2020-01-01',
+					// 	endDate: '2020-03-01',
+					// 	progress: '30',
+					// 	person: ['大白','小雨'],
+					// 	KR: [
+					// 		{title: '达到一定效果', progress: '30', type: 'NU', startNum: '0', endNum: '80' }
+					// 	]
+					// },
+					// {
+					// 	type: 0,
+					// 	title: '这是个人目标',
+					// 	startDate: '2020-01-01',
+					// 	endDate: '2020-03-01',
+					// 	progress: '30',
+					// 	person: ['大白'],
+					// 	KR: [
+					// 		{title: '达到一定效果的时候', progress: '30', type: 'NU', startNum: '0', endNum: '80' },
+					// 		{title: '达到一定效果的时候', progress: '60', type: 'NU', startNum: '0', endNum: '80' },
+					// 		{title: '达到一定效果的时候', progress: '80', type: 'NU', startNum: '0', endNum: '80' }
+					// 	]
+					// }
 				]
 			};
 		},
 		computed: {
 			...mapState(['OKRType'])
 		},
-		create(){
-			
+		mounted (){
+			// console.log('zhelikak')
+			this.getInfo()
 		},
 		methods: {
 			toChild(e) {
 				uni.navigateTo({
 					url: e.currentTarget.dataset.url
 				})
+			},
+			// 获取okr信息
+			async getInfo(){
+				console.log('zheli')
+				let params = {};
+				let res = await api.okr.getOKRInfo(params);
+				if (res.code === 10000) {
+					this.list = res.data
+				}
 			},
 			// 新增OKR
 			add(){

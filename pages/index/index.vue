@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<Home v-if="PageCur=='home'"></Home>
+		<Home v-if="PageCur=='home'" ref='home'></Home>
 		<Milepost v-if="PageCur=='milepost'"></Milepost>
 		<Mine v-if="PageCur=='mine'"></Mine>
 		
@@ -39,13 +39,20 @@
 	export default {
 		data() {
 			return {
-				PageCur: 'home'
+				PageCur: 'home',
+				pageShowed: false,
 			}
 		},
 		computed: {
 			...mapState(['hasLogin','userInfo'])
 		},
 		onShow(){
+			if (this.pageShowed) {
+				if (this.PageCur === 'home'){
+					this.$refs.home.getInfo()
+				}
+			}
+			this.pageShowed = true;
 			this.isLogin()
 		},
 		methods: {

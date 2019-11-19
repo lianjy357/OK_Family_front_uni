@@ -13,7 +13,7 @@
 			</view>
 			<view class="cu-form-group">
 				<view class="title">描述</view>
-				<input name="input" placeholder="你为什么会制定这个目标？" v-model="formInfo.describe"></input>
+				<input name="input" placeholder="你为什么会制定这个目标？" v-model="formInfo.description"></input>
 			</view>
       <view class="cu-form-group" data-url="/pages/family/family" :data-data="formInfo.person" @click="navClick">
 				<view class="title">负责人</view>
@@ -77,11 +77,15 @@
 				</picker>
 			</view>
 		</form>
+		<view class="padding flex flex-direction">
+			<button class="cu-btn bg-yellow margin-tb-sm lg" @click="determine">确定</button>
+		</view>
 
   </view>
 </template>
 
 <script>
+import api from '@/api/index.js'
 import { mapState } from 'vuex';  
 export default {
 	data(){
@@ -89,10 +93,10 @@ export default {
 			formInfo: {
 				type: 0,
 				title: '',
-				describe: '',
+				description: '',
 				startDate: this.getDate('start'),
 				endDate: this.getDate('appoint'),
-				progress: '30',
+				progress: '0',
 				person: ['lianjy','wangy'],
 				KR: [
 					// {title: '达到一定效果的时候', progress: '30', type: 'NU', numOpen: '0', numOut: '80' },
@@ -103,7 +107,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapState(['OKRType','member']),
+		...mapState(['OKRType','member','userInfo']),
 		startDate() {
 			return this.getDate('start');
 		},
@@ -147,8 +151,6 @@ export default {
 			} else {
 				var date = new Date();
 			}
-			
-			
 			let year = date.getFullYear();
 			let month = date.getMonth() + 1;
 			let day = date.getDate();
@@ -161,6 +163,15 @@ export default {
 			month = month > 9 ? month : '0' + month;;
 			day = day > 9 ? day : '0' + day;
 			return `${year}-${month}-${day}`;
+		},
+		// 确认保存
+		async determine() {
+			this.formInfo['username'] = this.userInfo.username
+			let params = this.formInfo
+			let res = await api.okr.saveOKRInfo(params)
+			uni.navigateTo({
+				url: '/pages/home/OKRadd'
+			})
 		}
 	}
 }
