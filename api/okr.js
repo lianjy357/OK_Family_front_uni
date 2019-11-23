@@ -12,7 +12,7 @@ export const getOKRInfo = () => {
     url: '/getOKRInfo',
     data: null,
     Type: 'GET',
-    loading: false
+    loading: true
   };
   return httpRequest(baseUrl, params);
 };

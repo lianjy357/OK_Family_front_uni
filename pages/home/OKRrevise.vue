@@ -1,9 +1,9 @@
 <template>
-  <!-- 新增OKR页面 -->
+  <!-- 修改OKR页面 -->
   <view>
     <cu-custom bgColor="bg-yellow" :isBack="true">
 			<block slot="backText">返回</block>
-			<block slot="content">新增</block>
+			<block slot="content">修改</block>
 		</cu-custom>
 
     <form>

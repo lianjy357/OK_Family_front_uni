@@ -9,7 +9,6 @@ const store = new Vuex.Store({
 	state: {
 		hasLogin: false, // 是否处于登录状态
 		userInfo: {}, // 登录用户信息
-		OKRInfo: [], // OKR信息
 		member: [ // 成员
 			{username: 'lianjy', nickname: '大白'},
 			{username: 'wangy', nickname: '小雨'}
