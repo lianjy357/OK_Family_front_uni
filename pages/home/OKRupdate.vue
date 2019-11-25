@@ -1,7 +1,7 @@
 <template>
   <!-- 更新进度OKR页面 -->
   <view>
-    <cu-custom bgcolor="bg-yellow" :isBack="true">
+    <cu-custom bgColor="bg-yellow" :isBack="true">
       <block slot="backText">返回</block>
       <block slot="content">更新进度</block>
     </cu-custom>
