@@ -77,11 +77,14 @@
             },
             "splashscreen" : {
                 "android" : {
-                    "hdpi" : "C:/Users/yixue/Desktop/ui/门识客启动页/480x762.png",
-                    "xhdpi" : "C:/Users/yixue/Desktop/ui/门识客启动页/720x1242.png",
-                    "xxhdpi" : "C:/Users/yixue/Desktop/ui/门识客启动页/1080x1882.png"
+                    "hdpi" : "C:/Users/yixue/Desktop/恒易达/480x762.png",
+                    "xhdpi" : "C:/Users/yixue/Desktop/恒易达/720x1242.png",
+                    "xxhdpi" : "C:/Users/yixue/Desktop/恒易达/1080x1882.png"
                 }
             }
+        },
+        "splashscreen" : {
+            "waiting" : false
         }
     },
     /* SDK配置 */

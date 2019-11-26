@@ -48,7 +48,8 @@
             </view>
             <view class="cu-form-group">
               <view class="title">信心指数</view>
-              <input placeholder="三字标题" name="input"></input>
+              <input placeholder="你能做到十分之几的信心(5/10)" name="input" v-model="KR.confidenceNum"></input>
+              <text>/10</text>
             </view>
           </form>
 				</view>
@@ -60,7 +61,9 @@
 
     <view class="padding flex flex-direction">
       <button class="cu-btn bg-yellow margin-tb-sm lg" @click="determine">确定</button>
+      <button class="cu-btn bg-red margin-tb-sm lg" @click="deleteokr">删除</button>
     </view>
+    
   </view>
 </template>
 
@@ -71,12 +74,14 @@ export default {
   data() {
     return {
       formInfo: {
+        ranid: '',
 				type: 0,
 				title: '',
 				description: '',
 				startDate: '',
 				endDate: '',
-				progress: '0',
+        progress: '0',
+        confidenceNum: '',
 				person: [],
 				KR: [
 					// {title: '达到一定效果的时候', progress: '30', type: 'NU', numOpen: '0', numOut: '80' },
@@ -97,10 +102,22 @@ export default {
     
     // 确认保存
     async determine() {
-      this.formInfo["username"] = this.userInfo.username;
-      let params = this.formInfo;
-      let res = await api.okr.saveOKRInfo(params);
-      uni.navigateTo({
+      let params = {
+        ranid: this.formInfo.ranid,
+        KR: this.formInfo.KR
+      }
+      let res = await api.okr.updataOKRprogress(params);
+      uni.switchTab({
+        url: "/pages/home/home"
+      });
+    },
+    // 确认删除
+    async deleteokr(){
+      let params = {
+        ranid: this.formInfo.ranid
+      }
+      let res = await api.okr.deleteOKR(params);
+      uni.switchTab({
         url: "/pages/home/home"
       });
     }

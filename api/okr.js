@@ -16,7 +16,7 @@ export const getOKRInfo = () => {
   };
   return httpRequest(baseUrl, params);
 };
-// 用户登入
+// 保存OKR
 export const saveOKRInfo = data => {
   let params = {
     url: '/saveOKRInfo',
@@ -27,9 +27,32 @@ export const saveOKRInfo = data => {
   };
   return httpRequest(baseUrl, params);
 }
-
+// 修改OKR进度
+export const updataOKRprogress = data => {
+  let params = {
+    url: '/updataOKRprogress',
+    data: data,
+    Type: 'POST',
+    loading: false,
+    // header: { 'content-type': 'application/x-www-form-urlencoded' }
+  };
+  return httpRequest(baseUrl, params);
+}
+// 删除OKR
+export const deleteOKR = data => {
+  let params = {
+    url: '/deleteOKR',
+    data: data,
+    Type: 'POST',
+    loading: false,
+    // header: { 'content-type': 'application/x-www-form-urlencoded' }
+  };
+  return httpRequest(baseUrl, params);
+}
 
 export default {
   getOKRInfo,               // 获取OKR信息
   saveOKRInfo,              // 保存OKR信息
+  updataOKRprogress,        // 修改OKR进度
+  deleteOKR,                // 删除OKR
 };

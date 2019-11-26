@@ -23,7 +23,7 @@
 			</view>
 			<view class="cu-form-group">
 				<view class="title">目标值</view>
-				<input mode="number" name="input" maxlength="2" v-model="KR.endNum" placeholder='根据类型填写数值'></input>
+				<input mode="number" name="input" v-model="KR.endNum" placeholder='根据类型填写数值'></input>
 				<text v-if="KR.type === 'PER'">%</text>
 			</view>
 			<view class="cu-form-group">
