@@ -17,7 +17,7 @@ export const userLogin = data => {
 // 用户注册
 export const userRegister = data => {
   let params = {
-    url: '/register',
+    url: '/api/v1/register',
     data: data,
     Type: 'POST',
     // header: { 'content-type': 'application/x-www-form-urlencoded' }

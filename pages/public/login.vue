@@ -1,17 +1,17 @@
 <template>
-	<view class="loginPage bg-gradual-red">
+	<view class="loginPage bg-yellow">
 		<!-- <image class="fixed loginBg" src="/static/image/bg.jpg" mode=""></image> -->
 		
 		<!-- logo -->
 		<view class="loginBox">
 			<!-- <image class="logo" src="/static/image/login_title.png" mode="aspectFit"></image> -->
-      <text class="logo title-text">欢迎光临·人脸轨迹系统</text>
+      <text class="logo title-text">欢迎光临·OK family</text>
 		</view>
 
 		<view class="loginForm flex flex-direction align-center bg-white relative">
 
       <view class="nav round fz24 text-grey text-bold flex mt50">
-				<view class="nav-item round flex justify-center align-center" :class="index==currentTab?'bg-active cur':''" v-for="(item, index) in type" 
+				<view class="nav-item round flex justify-center align-center" :class="index==currentTab?'bg-yellow cur':''" v-for="(item, index) in type" 
 				:key="index" @tap="tabSelect(item, index)">
 					{{item.label}}
 				</view>
@@ -34,7 +34,7 @@
 								<text>忘记密码?</text>
 							</view>
 							<!-- 登录按钮 -->
-							<view class="cu-btn round submitBtn lg mt80 mb50 itemShadow shadow-blur" @tap="submit">登录</view>
+							<view class="cu-btn round submitBtn lg mt80 mb50 itemShadow shadow-blur bg-yellow" @tap="submit">登录</view>
 
 							<view class="flex justify-center align-center">
 								<!-- <image style="width:40upx;height:40upx;" class="mr15" src="/static/tabbar/icon_question.png" mode="aspectFit"></image>  -->
@@ -48,25 +48,30 @@
 				<swiper-item>
 					
 					<view class="pl88 pr88">
-						<view class="inputItem mt40 itemShadow relative" :class="[currentFocus == 3 ? 'box-color' : '']">
-							<image class="icon1 absolute" src="/static/tabbar/yonghu.png" mode="aspectFit"></image>
+						<view class="inputItem mt20 itemShadow relative" :class="[currentFocus == 3 ? 'box-color' : '']">
+							<text class="icon absolute cuIcon-mail"></text>
 							<input @focus="currentFocus = 3" @blur="currentFocus = 0"
-							class="pl70 h100 primary-color" type="text" placeholder-class="text-gray" maxlength="30" v-model="registerForm.userName" placeholder="请输入用户名"/>
+							class="pl70 h100 primary-color" type="text" placeholder-class="text-gray" maxlength="30" v-model="registerForm.email" placeholder="请输入邮箱"/>
+						</view>
+						<view class="inputItem mt40 itemShadow relative" :class="[currentFocus == 3 ? 'box-color' : '']">
+							<text class="icon absolute cuIcon-emoji"></text>
+							<input @focus="currentFocus = 3" @blur="currentFocus = 0"
+							class="pl70 h100 primary-color" type="text" placeholder-class="text-gray" maxlength="30" v-model="registerForm.userName" placeholder="请输入昵称"/>
 						</view>
 						<view class="inputItem mt40 itemShadow relative pr200" :class="[currentFocus == 4 ? 'box-color' : '']">
-							<image class="icon3 absolute" src="/static/tabbar/dunpai.png" mode="aspectFit"></image>
+							<text class="icon absolute cuIcon-we"></text>
 							<input @focus="currentFocus = 4" @blur="currentFocus = 0"
 							class="pl70  primary-color h100" type="text" placeholder-class="text-gray" maxlength="30" v-model="registerForm.helloCode" placeholder="请输入邀请码">
 							<!-- <view v-show="loginData.showVcode" @click="getVcode()" class='verifyBtn round flex justify-center align-center bg-active shadow-blur'>验证码</view>
 							<view v-show="!loginData.showVcode" class='verifyBtn round flex justify-center align-center bg-grey shadow-blur'>{{loginData.timer}}s</view> -->
 						</view>
 						<view class="inputItem mt40 itemShadow relative" :class="[currentFocus == 5 ? 'box-color' : '']">
-							<image class="icon2 absolute" src="/static/tabbar/mima.png" mode="aspectFit" @click="showPassword"></image>
+							<text class="icon absolute cuIcon-lock" @click="showPassword"></text>
 							<input @focus="currentFocus = 5" @blur="currentFocus = 0"
 							:password="registerForm.showPassword" class="pl70 h100 primary-color" type="text" placeholder-class="text-gray" maxlength="15" v-model="registerForm.password" placeholder="请输入6~15位数字或字母密码">
 						</view>
 						
-						<view class="cu-btn round submitBtn mt50 mb30 lg bg-cyan itemShadow shadow-blur" @tap="register">注册</view>
+						<view class="cu-btn round submitBtn mt50 mb30 lg bg-yellow itemShadow shadow-blur" @tap="register">注册</view>
 
 						<view class="flex justify-center align-center">
 							<!-- <image style="width:38upx;height:38upx;" class="mr15" src="/static/tabbar/icon_question.png" mode="aspectFit"></image>  -->
@@ -110,10 +115,11 @@ export default {
         password: ''
       },
 			registerForm: { // 注册数据
+				email: '',
 				userName: '',
 				helloCode: '', // 邀请码
 				password: '',
-				showPassword: false, // 显示密码
+				showPassword: true, // 显示密码
 			}
     }
   },
@@ -202,7 +208,7 @@ export default {
 	margin: 0 auto; border-radius: 14upx; top: -50upx;
 	padding-bottom: 20upx; width: 674upx;
 
-	.icon{	height: 50upx;	width: 50upx;	left: 10upx;	top: 5upx; }
+	.icon{ font-size: 60upx; }
 	.icon1 { width: 31upx; height: 52upx; top: 10upx; left: 19upx; }
 	.icon2 { width: 37upx; height: 43upx; top: 13upx; left: 16upx; }
 	.icon3 { width: 39upx; height: 45upx; top: 13upx; left: 15upx; }
@@ -220,12 +226,9 @@ export default {
 	}
 	.submitBtn {
 		width: 100%; height: 80upx;
-		background-image: linear-gradient(90deg, #f43f3b 0%, #ec008c 100%), linear-gradient(#ffffff, #ffffff);
-    color: #ffffff;
 	}
 }
 
-.bg-active { background-image: linear-gradient(45deg, #f43f3b, #ec008c); color: #ffffff; }
 .primary-color { color: #7B9CFA; }
 
 
